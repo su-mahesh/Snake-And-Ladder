@@ -81,32 +81,60 @@ class SnakeAndLadder
 }
 	}
 	
+	static int toss()
+	{
+		return (int) (Math.random() * 10) %2;
+	}
+	
 	//Main funtion
 	public static void main(String[] args)
 	{
 	
-	Player player[] = new Player[1];	
+	Player player[] = new Player[2];	
 	player[0] = new Player();
+	player[1] = new Player();
+	
 	play_Option nextMove = play_Option.NoPlay;	
 	int playerPreviousPosition = 0;
+	int currentPlayer = 0;
+	int idlePlayer = 1;
 	
 	//computation
 	initialiseGame(player[0]);
+	initialiseGame(player[1]);
 	
-while(player[0].getPosition() != winning_position)
+	if(	toss()	==	0 )
+	{
+	currentPlayer = 1;
+	idlePlayer = 0;
+	}	
+	
+while(	player[0].getPosition() != winning_position && player[1].getPosition() != winning_position	)
 {	
 	diceOutcome = rollDice();
-	player[0].countDiceRoll();
+	player[	currentPlayer	].countDiceRoll();
 	nextMove = checkPlayOption();
 	
-	playerPreviousPosition = player[0].getPosition();
+	playerPreviousPosition = player[currentPlayer].getPosition();
 	
-	player[0].setPosition(getMoves( nextMove,	diceOutcome ));
-	System.out.println("Dice roll No:" +	player[0].getDiceRollCount()	+ " Outcome: " + diceOutcome);
+	player[	currentPlayer	].setPosition(getMoves( nextMove,	diceOutcome ));
+	System.out.println("Player "+(currentPlayer	+	1)+" playing");
+	System.out.println("Dice roll No: " +	player[currentPlayer].getDiceRollCount()	+ " Outcome: " + diceOutcome);
 	System.out.println("play option: " + nextMove);
-	System.out.println("Player Position: "+ playerPreviousPosition+" >> "+player[0].getPosition() + "\n");
+	System.out.println("Player Position: "+ playerPreviousPosition+" >> "+player[currentPlayer].getPosition() + "\n");
+
+	if(nextMove	!=	play_Option.Ladder)
+	{
+	
+	int temp = idlePlayer;
+	idlePlayer = currentPlayer;
+	currentPlayer = temp;
+	}
 
 }
+
+	System.out.println("Player "+(currentPlayer	+	1)+" won");
+	
 	
 
 	
