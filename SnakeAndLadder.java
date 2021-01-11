@@ -6,9 +6,11 @@ class Player
 	//functions
 	void setPosition(int position)
 	{	
-		
-	playerPosition += position;
-	if (playerPosition < 0)
+	
+	if(	playerPosition	+ position <= SnakeAndLadder.winning_position	)
+			playerPosition += position;
+			
+	if (	playerPosition < 0	)
 	playerPosition = 0;
 	}
 	
@@ -50,9 +52,9 @@ class SnakeAndLadder
 	
 	}
 	
-	static void initialiseGame(Player p)
+	static void initialiseGame(	Player p	)
 	{
-	p.setPosition(start_position);
+	p.setPosition(	start_position	);
 	}
 	static int getMoves(play_Option nextMove, int diceOutcome){
 			switch(nextMove)
