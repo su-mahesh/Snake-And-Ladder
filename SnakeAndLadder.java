@@ -2,6 +2,7 @@ class Player
 {
 	//variable
 	private int playerPosition = 0;
+	private int diceRollCount = 0;
 	
 	//functions
 	void setPosition(int position)
@@ -13,11 +14,21 @@ class Player
 	if (	playerPosition < 0	)
 	playerPosition = 0;
 	}
+	int getDiceRollCount()
+	{
+	return diceRollCount;
+	}
+	void countDiceRoll()
+	{
+	diceRollCount++;
+	}
 	
 	int getPosition()
 	{
 	return	playerPosition;
 	}	
+	
+	
 }
 
 
@@ -85,13 +96,13 @@ class SnakeAndLadder
 while(player[0].getPosition() != winning_position)
 {	
 	diceOutcome = rollDice();
-	
+	player[0].countDiceRoll();
 	nextMove = checkPlayOption();
 	
 	playerPreviousPosition = player[0].getPosition();
 	
 	player[0].setPosition(getMoves( nextMove,	diceOutcome ));
-	System.out.println("Dice rolled, Outcome: " + diceOutcome);
+	System.out.println("Dice roll No:" +	player[0].getDiceRollCount()	+ " Outcome: " + diceOutcome);
 	System.out.println("play option: " + nextMove);
 	System.out.println("Player Position: "+ playerPreviousPosition+" >> "+player[0].getPosition() + "\n");
 
