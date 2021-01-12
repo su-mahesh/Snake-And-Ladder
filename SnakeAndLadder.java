@@ -26,9 +26,7 @@ class Player
 	int getPosition()
 	{
 	return	playerPosition;
-	}	
-	
-	
+	}		
 }
 
 
@@ -130,13 +128,8 @@ while(	player[0].getPosition() != winning_position && player[1].getPosition() !=
 	idlePlayer = currentPlayer;
 	currentPlayer = temp;
 	}
-
 }
-
 	System.out.println("Player "+(currentPlayer	+	1)+" won");
-	
-	
-
 	
 	}
 
