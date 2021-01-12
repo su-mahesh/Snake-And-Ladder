@@ -40,6 +40,7 @@ class Player
 	}		
 }
 
+//computation
 class SnakeAndLadder
 {
 	//variable
