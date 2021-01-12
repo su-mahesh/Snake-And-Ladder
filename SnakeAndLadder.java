@@ -29,8 +29,6 @@ class Player
 	}		
 }
 
-
-
 class SnakeAndLadder
 {
 	//variable
